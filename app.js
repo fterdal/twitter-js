@@ -1,5 +1,11 @@
+const chalk = require('chalk');
 const express = require('express');
 const app = express();
+
+app.use('*', (req, res, next) => {
+  console.log(chalk.blue(req.method), chalk.red(req.originalUrl));
+  next();
+});
 
 app.get('/', (req, res) => {
   res.send('Hello, World');
