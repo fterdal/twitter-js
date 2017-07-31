@@ -1,6 +1,18 @@
 const chalk = require('chalk');
+const nunjucks = require('nunjucks');
 const express = require('express');
 const app = express();
+
+// nunjucks configuration
+var locals = {
+    title: 'An Example',
+    people: [
+        { name: 'Gandalf'},
+        { name: 'Frodo' },
+        { name: 'Hermione'}
+    ]
+};
+nunjucks.configure('views', {noCache: true, express: app});
 
 app.use('*', (req, res, next) => {
   console.log(chalk.blue(req.method), chalk.red(req.originalUrl));
@@ -8,7 +20,10 @@ app.use('*', (req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('Hello, World');
+  // res.send('Home Page');
+  nunjucks.render('index.html', locals, function (err, output) {
+    res.send(output);
+  });
 });
 
 app.get('/news', (req, res) => {
