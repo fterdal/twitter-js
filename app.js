@@ -16,7 +16,7 @@ app.get('/news', (req, res) => {
 });
 
 const PORT = 3000;
-
+// Listeneing to server
 app.listen(3000, () => {
   console.log(`Listening on PORT ${PORT}`);
 });
