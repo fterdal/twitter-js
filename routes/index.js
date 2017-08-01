@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 // could use one line instead: const router = require('express').Router();
 const tweetBank = require('../tweetBank');
-const fs = require('fs');
 
 router.get('/users/:name', function (req, res) {
   let tweets = tweetBank.find({name: req.params.name});
@@ -11,15 +10,17 @@ router.get('/users/:name', function (req, res) {
 
 router.get('/tweets/:id', function (req, res) {
   let tweets = tweetBank.find({id: req.params.id});
-  console.log(req.params);
-  // console.log(tweets);
   res.render( 'index', { tweets: tweets } );
 });
 
 router.get('/', function (req, res) {
   let tweets = tweetBank.list();
-  // console.log(tweets);
-  res.render( 'index', { tweets: tweets } );
+  res.render( 'index', { tweets: tweets, showForm: true } );
+});
+
+router.post('/tweets', function (req, res) {
+  // let tweets = tweetBank.list();
+  // res.render( 'index', { tweets: tweets, showForm: true } );
 });
 
 module.exports = router;
