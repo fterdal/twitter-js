@@ -17,8 +17,9 @@
       <ul>
         {% for tweet in tweets %}
           <li>
-            <p class="tweet-name">{{tweet.name}}</p>
-            <p>{{tweet.content}}</p>
+            <a href="/users/{{tweet.name}}" class="tweet-name">
+              {{tweet.name}}
+            </a> - {{tweet.content}}
           </li>
         {% endfor %}
       </ul>
