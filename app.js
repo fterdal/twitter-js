@@ -8,10 +8,13 @@ const socketio = require('socket.io');
 const tweetBank = require('./tweetBank');
 const routes = require('./routes');
 
+const server = app.listen(3000);
+const io = socketio.listen(server);
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/', routes);
+app.use('/', routes(io) );
 app.use(express.static('public'));
 
 // Nunjucks Config
@@ -20,7 +23,3 @@ app.engine('html', nunjucks.render);
 nunjucks.configure('views', {noCache: true});
 
 app.use('/', routes);
-
-const PORT = 3000;
-// Listeneing to server
-let server = app.listen(PORT, () => { } );
