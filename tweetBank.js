@@ -5,7 +5,6 @@ let latestId = 1;
 let data = [];
 
 function add (name, content) {
-  console.log(data);
   data.push({id: latestId + '', name: name, content: content });
   latestId++;
 }
