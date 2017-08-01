@@ -3,6 +3,7 @@ const nunjucks = require('nunjucks');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const socketio = require('socket.io');
 
 const tweetBank = require('./tweetBank');
 const routes = require('./routes');
@@ -22,4 +23,4 @@ app.use('/', routes);
 
 const PORT = 3000;
 // Listeneing to server
-app.listen(PORT, () => { } );
+let server = app.listen(PORT, () => { } );
