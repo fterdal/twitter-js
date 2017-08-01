@@ -9,9 +9,4 @@ router.get('/', function (req, res) {
   res.render( 'index', { tweets: tweets } );
 });
 
-router.get('/stylesheets/style.css', function (req, res) {
-  // let css = fs.readFileSync('../public/stylesheets/style.css');
-  res.sendFile('/code/fullstack/junior/twitter-js/public/stylesheets/style.css');
-});
-
 module.exports = router;

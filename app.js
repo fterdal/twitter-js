@@ -6,6 +6,7 @@ const app = express();
 const tweetBank = require('./tweetBank');
 const routes = require('./routes');
 app.use('/', routes);
+app.use(express.static('public'));
 
 // Nunjucks Config
 app.set("view engine","html");
